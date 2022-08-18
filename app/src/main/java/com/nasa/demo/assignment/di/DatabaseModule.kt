@@ -2,6 +2,7 @@ package com.nasa.demo.assignment.di
 
 import android.content.Context
 import androidx.room.Room
+import com.nasa.demo.assignment.api.ApiService
 import com.nasa.demo.assignment.database.AppDatabase
 import com.nasa.demo.assignment.repository.DataRepository
 import dagger.Module
@@ -26,7 +27,7 @@ class DatabaseModule {
 
 
     @Provides
-    fun provideDataRepository(): DataRepository {
-        return DataRepository()
+    fun provideDataRepository(apiService: ApiService, database: AppDatabase): DataRepository {
+        return DataRepository(apiService, database)
     }
 }

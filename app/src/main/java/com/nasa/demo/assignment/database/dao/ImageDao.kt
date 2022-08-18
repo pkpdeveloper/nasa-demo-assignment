@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.nasa.demo.assignment.api.response.ImageResponse
 import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao
@@ -16,6 +16,9 @@ interface ImageDao {
     fun getAll(): Single<List<ImageResponse>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(imageList: List<ImageResponse>): Completable
+    fun insert(imageResponse: ImageResponse): Completable
+
+    @Query("SELECT * FROM imageresponse WHERE date = :date")
+    fun getByDate(date: String): Maybe<ImageResponse>
 
 }

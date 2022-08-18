@@ -11,6 +11,6 @@ interface ApiService {
     @GET("planetary/apod")
     fun picsOfTheDay(
         @Query("api_key") apiKey: String,
-        @Query("count") count: Int
-    ): Single<List<ImageResponse>>
+        @Query("date") date: String
+    ): Single<ImageResponse>
 }

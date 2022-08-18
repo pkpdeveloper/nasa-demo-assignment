@@ -12,9 +12,10 @@ class ImageResponse(
     @SerializedName("copyright")
     var copyright: String? = null,
 
+    @PrimaryKey
     @ColumnInfo(name = "date")
     @SerializedName("date")
-    var date: String? = null,
+    var date: String = "",
 
     @ColumnInfo(name = "explanation")
     @SerializedName("explanation")
@@ -36,10 +37,9 @@ class ImageResponse(
     @SerializedName("title")
     var title: String? = null,
 
-    @PrimaryKey
     @ColumnInfo(name = "url")
     @SerializedName("url")
-    var url: String = ""
+    var url: String? = null
 )
 
 
