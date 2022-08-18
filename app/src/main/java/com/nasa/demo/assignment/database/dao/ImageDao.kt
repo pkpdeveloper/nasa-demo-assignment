@@ -12,8 +12,8 @@ import io.reactivex.Single
 @Dao
 interface ImageDao {
 
-    @Query("SELECT * FROM imageresponse")
-    fun getAll(): Single<List<ImageResponse>>
+    @Query("SELECT * FROM imageresponse WHERE isFavorite = 1")
+    fun getFavoriteList(): Single<List<ImageResponse>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(imageResponse: ImageResponse): Completable

@@ -39,7 +39,10 @@ class ImageResponse(
 
     @ColumnInfo(name = "url")
     @SerializedName("url")
-    var url: String? = null
+    var url: String? = null,
+
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Int = 0
 )
 
 

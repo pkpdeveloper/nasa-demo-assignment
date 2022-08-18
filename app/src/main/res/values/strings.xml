@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NASA Demo Assignment</string>
     <string name="select_date">Select date</string>
+    <string name="favorite">Favorite</string>
 </resources>

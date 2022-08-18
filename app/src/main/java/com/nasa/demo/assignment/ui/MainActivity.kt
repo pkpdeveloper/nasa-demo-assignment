@@ -7,8 +7,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.nasa.demo.assignment.R
 import com.nasa.demo.assignment.ui.fragment.DatePickerFragment
+import com.nasa.demo.assignment.ui.fragment.FavoriteListFragment
 import com.nasa.demo.assignment.ui.fragment.ImageFragment
-import com.nasa.demo.assignment.ui.fragment.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +35,21 @@ class MainActivity : AppCompatActivity() {
                 showDatePickerDialog()
                 true
             }
+            R.id.action_favorite -> {
+                showFavoriteList()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showFavoriteList() {
+        val existingFragment = supportFragmentManager.findFragmentByTag("favoriteList")
+        if (existingFragment == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragmentContainer, FavoriteListFragment(), "favoriteList")
+                .addToBackStack(null)
+                .commit()
         }
     }
 

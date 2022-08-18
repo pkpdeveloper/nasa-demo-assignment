@@ -28,4 +28,13 @@ class MainViewModel @Inject constructor(
         getImage()
     }
 
+    fun getFavoriteList(): LiveData<List<ImageResponse>> {
+        return repository.getFavoriteList()
+    }
+
+    fun updateFavoriteStatus(imageResponse: ImageResponse) {
+        repository.updateFavoriteStatus(imageResponse)
+        getFavoriteList()
+    }
+
 }

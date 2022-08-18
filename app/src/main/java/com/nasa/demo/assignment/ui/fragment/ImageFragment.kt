@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import com.nasa.demo.assignment.R
 import com.nasa.demo.assignment.api.response.ImageResponse
 import com.nasa.demo.assignment.databinding.FragmentImageBinding
 import com.nasa.demo.assignment.ui.viewmodel.MainViewModel
@@ -39,9 +40,13 @@ class ImageFragment : Fragment() {
 
     private fun getData() {
         viewModel.getImage().observe(viewLifecycleOwner) {
-            it?.let {
+            if (it != null) {
+                binding.emptyLayout.visibility = View.GONE
                 bindData(it)
+            } else {
+                binding.emptyLayout.visibility = View.VISIBLE
             }
+
         }
     }
 
@@ -62,6 +67,22 @@ class ImageFragment : Fragment() {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transition(DrawableTransitionOptions.withCrossFade(factory))
                 .into(imageView)
+            displayFavoriteStatus(imageResponse)
+            favoriteImageView.setOnClickListener {
+                if (imageResponse.isFavorite == 1) {
+                    imageResponse.isFavorite = 0
+                } else {
+                    imageResponse.isFavorite = 1
+                }
+                viewModel.updateFavoriteStatus(imageResponse)
+                displayFavoriteStatus(imageResponse)
+            }
+        }
+    }
+
+    private fun displayFavoriteStatus(imageResponse: ImageResponse) {
+        with(binding) {
+            favoriteImageView.setImageResource(if (imageResponse.isFavorite == 1) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24)
         }
     }
 
