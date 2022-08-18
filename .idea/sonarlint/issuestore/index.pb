@@ -21,9 +21,5 @@ X
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 p
 @app/src/main/java/com/nasa/demo/assignment/const/AppConstants.kt,d/7/d71f5cf33d68ba698c96edfb95ceb12f7467f570
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 p
 @app/src/main/java/com/nasa/demo/assignment/ui/MainApplication.kt,8/1/81bcd578123b300a6f8c387d15c94565d8b9087f

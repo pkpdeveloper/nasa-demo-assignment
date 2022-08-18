@@ -3,6 +3,7 @@ package com.nasa.demo.assignment.di
 import android.content.Context
 import androidx.room.Room
 import com.nasa.demo.assignment.database.AppDatabase
+import com.nasa.demo.assignment.repository.DataRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,4 +25,8 @@ class DatabaseModule {
     }
 
 
+    @Provides
+    fun provideDataRepository(): DataRepository {
+        return DataRepository()
+    }
 }
